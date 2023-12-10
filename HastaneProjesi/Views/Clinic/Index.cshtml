@@ -1,0 +1,30 @@
+﻿@model List<HastaneProjesi.Models.Clinic>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clinic List</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Mail</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ClinicID</td>
+            <td>@x.ClinicName</td>
+            <td>@x.ClinicDescription</td>
+            <td></td>
+            <td><a href="#" class="btn btn-danger">Delete</a></td>
+            <td><a href="#" class="btn btn-success">Update</a></td>
+            <td><a href="#" class="btn btn-info">Details</a></td>
+        </tr>
+    }
+</table>
+<a href="/Clinic/ClinicAdd" class="btn btn-primary">Add New Clinic</a>
