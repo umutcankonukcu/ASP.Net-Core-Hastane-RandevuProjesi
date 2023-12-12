@@ -1,11 +1,11 @@
 ﻿using HastaneProjesi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HastaneProjesi.Repositories
 {
     public class DoctorRepository
     {
         Context d = new Context();
-
         public List<Doctor> DoctorList()
         {
             return d.Doctors.ToList();
@@ -29,6 +29,10 @@ namespace HastaneProjesi.Repositories
         {
             d.Doctors.Find(dr);
             
+        }
+        public List<Doctor> DoctorList(string dr)
+        {
+            return d.Doctors.Include(dr).ToList();
         }
     }
 }

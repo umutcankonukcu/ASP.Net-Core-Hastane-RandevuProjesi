@@ -5,7 +5,8 @@
 }
 
 <h2>Doctor List</h2>
-<br />
+<hr />
+
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
@@ -13,6 +14,8 @@
         <th>Type</th>
         <th>Description</th>
         <th>Mail</th>
+        <th>Clinic ID</th>
+        <th>Clinic Name</th>
     </tr>
     @foreach (var x in Model)
     {
@@ -22,6 +25,8 @@
             <td>@x.DoctorType</td>
             <td>@x.DoctorDescription</td>
             <td>@x.DoctorEmail</td>
+            <td>@x.ClinicID</td>
+            <td>@x.Clinic.ClinicName</td>
             <td></td>
             <td><a href="#" class="btn btn-danger">Delete</a></td>
             <td><a href="#" class="btn btn-success">Update</a></td>
@@ -29,4 +34,4 @@
         </tr>
     }
 </table>
-<a href="#" class="btn btn-primary">Add New Doctor</a>
+<a href="/Doctor/DoctorAdd/" class="btn btn-primary">Add New Doctor</a>

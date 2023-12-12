@@ -1,9 +1,20 @@
-﻿@model List<HastaneProjesi.Models.Clinic>
+﻿@model HastaneProjesi.Models.Clinic
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ClinicAdd";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>
-    adşasdlş
-</h1>
+<h2>Clinic Add Page</h2>
+<br />
+@using (Html.BeginForm("ClinicAdd", "Clinic", FormMethod.Post)) 
+{
+    @Html.LabelFor(x=>x.ClinicName)
+    @Html.TextBoxFor(x=>x.ClinicName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x=>x.ClinicName,"",new { @style="color:red"})
+    <br />
+    <br />
+    @Html.LabelFor(x=>x.ClinicDescription)
+    @Html.TextBoxFor(x=>x.ClinicDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Save</button>
+}

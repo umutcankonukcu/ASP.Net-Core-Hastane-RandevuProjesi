@@ -21,8 +21,12 @@ namespace HastaneProjesi.Controllers
         [HttpPost]
         public IActionResult ClinicAdd(Clinic p)
         {
+           // if (!ModelState.IsValid)
+           // {
+             //   return View("ClinicAdd");
+            //}
             clinicRepository.ClinicAdd(p);
-            return View();
+            return RedirectToAction("Index");
         }
 
     }
