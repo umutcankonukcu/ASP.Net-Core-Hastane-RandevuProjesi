@@ -1,6 +1,3 @@
-# ASP.Net-Core-Hastane-RandevuProjesi
-ASP.NET Core MVC kullanarak yapmış olduğum Hastane Randevu Projesi 
-
 # ASP.Net-Core-Hastane-Randevu-Projesi
 ASP.NET Core MVC kullanarak yapmış olduğum Hastane Randevu Projesi
 
