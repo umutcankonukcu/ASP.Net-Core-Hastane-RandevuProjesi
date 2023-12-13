@@ -34,5 +34,7 @@ namespace HastaneProjesi.Repositories
         {
             return d.Doctors.Include(dr).ToList();
         }
+
+        
     }
 }

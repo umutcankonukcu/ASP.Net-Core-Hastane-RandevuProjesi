@@ -11,9 +11,8 @@ namespace HastaneProjesi.Models
 
         [Required(ErrorMessage ="Clinic name not empty!!!")]
         public string ClinicName { get; set; }
-
         public string ClinicDescription { get; set; }  
-
+        public bool Status { get; set; }
         public List<Doctor> Doctors { get; set; }
 
     }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneProjesi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231211143956_deneme5")]
-    partial class deneme5
+    [Migration("20231212185209_CreateStatusColumnInClinicsTable")]
+    partial class CreateStatusColumnInClinicsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,9 @@ namespace HastaneProjesi.Migrations
                     b.Property<string>("ClinicName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("ClinicID");
 

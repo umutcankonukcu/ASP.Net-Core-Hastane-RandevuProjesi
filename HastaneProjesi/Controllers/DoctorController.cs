@@ -2,6 +2,7 @@
 using HastaneProjesi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Identity.Client;
 
 namespace HastaneProjesi.Controllers
 {
@@ -17,7 +18,7 @@ namespace HastaneProjesi.Controllers
         [HttpGet]
         public IActionResult DoctorAdd()
         {
-            List<SelectListItem> values = (from x in c.Clinics.ToList()
+            List<SelectListItem> values = (from x in c.Clinics.ToList().Where(x=>x.Status==true)
                                            select new SelectListItem
                                            {
                                                Text = x.ClinicName,
@@ -29,14 +30,39 @@ namespace HastaneProjesi.Controllers
         [HttpPost]
         public IActionResult DoctorAdd(Doctor p)
         {
-           // if(!ModelState.IsValid)
-           // {
-            //    return View("DoctorAdd");
+            /*  if(!ModelState.IsValid)
+               {
+                   return View("DoctorAdd");
 
-            //}
+               } */
 
             doctorRepository.DoctorAdd(p);
             return RedirectToAction("Index");
+
         }
+
+        public IActionResult DoctorDelete(int id)
+        {
+            doctorRepository.DoctorDelete(new Doctor { DoctorID= id});
+            return RedirectToAction("Index");
+        }
+
+       /* public IActionResult DoctorGet(int id)
+        {
+            var x = doctorRepository.GetDoctor(id);
+            Doctor d = new Doctor()
+            {
+               ClinicID = x.ClinicID,
+               DoctorName = x.DoctorName,
+               DoctorDescription = x.DoctorDescription,
+               DoctorType = x.DoctorType,
+               DoctorEmail = x.DoctorEmail,
+
+            };
+            return View(d);
+        }
+       */
     }
-}
+}       
+
+

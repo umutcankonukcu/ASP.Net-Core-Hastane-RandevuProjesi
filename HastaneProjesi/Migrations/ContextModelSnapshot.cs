@@ -37,6 +37,9 @@ namespace HastaneProjesi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.HasKey("ClinicID");
 
                     b.ToTable("Clinics");

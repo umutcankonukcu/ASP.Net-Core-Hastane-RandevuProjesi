@@ -24,9 +24,9 @@ namespace HastaneProjesi.Repositories
             c.Clinics.Update(cl);
             c.SaveChanges();
         }
-        public void GetClinic(Clinic cl)
+        public Clinic GetClinic(int id)
         {
-            c.Clinics.Find(cl);
+           return c.Clinics.Find(id);
         }
         
     }

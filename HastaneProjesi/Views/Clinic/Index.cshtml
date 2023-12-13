@@ -9,10 +9,11 @@
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Mail</th>
+        <th>Clinic Name</th>
+        <th>Clinic Description</th>
+        <th>Status</th>
+        <th>Delete</th>
+        <th>Update</th>
     </tr>
     @foreach (var x in Model)
     {
@@ -20,10 +21,10 @@
             <td>@x.ClinicID</td>
             <td>@x.ClinicName</td>
             <td>@x.ClinicDescription</td>
-            <td></td>
-            <td><a href="#" class="btn btn-danger">Delete</a></td>
-            <td><a href="#" class="btn btn-success">Update</a></td>
-            <td><a href="#" class="btn btn-info">Details</a></td>
+            <td>@x.Status</td>
+            <td><a href="/Clinic/ClinicDelete/@x.ClinicID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Clinic/ClinicGet/@x.ClinicID" class="btn btn-success">Update</a></td>
+            
         </tr>
     }
 </table>

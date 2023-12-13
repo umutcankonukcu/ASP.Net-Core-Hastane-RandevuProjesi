@@ -1,9 +1,8 @@
 ﻿@model HastaneProjesi.Models.Doctor
 @{
-    ViewData["Title"] = "DoctorAdd";
+    ViewData["Title"] = "DoctorGet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="row">
     <div class="col-lg-9 mx-auto rounded border p-3">
@@ -13,7 +12,7 @@
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Doctor Name: </label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="DoctorName"/>
+                    <input class="form-control" asp-for="DoctorName" />
                     <span asp-validation-for="DoctorName" class="text-danger"></span>
                 </div>
             </div>
@@ -29,7 +28,7 @@
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Doctor Description: </label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="DoctorDescription" />                    
+                    <input class="form-control" asp-for="DoctorDescription" />
                 </div>
             </div>
 
@@ -57,4 +56,3 @@
         </form>
     </div>
 </div>
-

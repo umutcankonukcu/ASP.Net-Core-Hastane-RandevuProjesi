@@ -16,6 +16,8 @@
         <th>Mail</th>
         <th>Clinic ID</th>
         <th>Clinic Name</th>
+        <th>Delete</th>
+        <th>Update</th>
     </tr>
     @foreach (var x in Model)
     {
@@ -27,11 +29,12 @@
             <td>@x.DoctorEmail</td>
             <td>@x.ClinicID</td>
             <td>@x.Clinic.ClinicName</td>
-            <td></td>
-            <td><a href="#" class="btn btn-danger">Delete</a></td>
+            
+            <td><a href="/Doctor/DoctorDelete/@x.DoctorID" class="btn btn-danger">Delete</a></td>
             <td><a href="#" class="btn btn-success">Update</a></td>
             <td><a href="#" class="btn btn-info">Details</a></td>
         </tr>
     }
 </table>
 <a href="/Doctor/DoctorAdd/" class="btn btn-primary">Add New Doctor</a>
+
