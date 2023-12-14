@@ -3,6 +3,7 @@ using HastaneProjesi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Client;
+using X.PagedList;
 
 namespace HastaneProjesi.Controllers
 {
@@ -10,10 +11,10 @@ namespace HastaneProjesi.Controllers
     {
         Context c = new Context();
         DoctorRepository doctorRepository = new DoctorRepository();
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
             
-            return View(doctorRepository.DoctorList("Clinic"));
+            return View(doctorRepository.DoctorList("Clinic").ToPagedList(page,5));
         }
         [HttpGet]
         public IActionResult DoctorAdd()

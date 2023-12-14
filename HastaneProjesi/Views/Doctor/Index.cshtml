@@ -1,4 +1,6 @@
-﻿@model List<HastaneProjesi.Models.Doctor>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@model IPagedList<HastaneProjesi.Models.Doctor>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,5 +38,7 @@
         </tr>
     }
 </table>
+
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{ page}));
 <a href="/Doctor/DoctorAdd/" class="btn btn-primary">Add New Doctor</a>
 
