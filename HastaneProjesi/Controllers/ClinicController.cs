@@ -2,12 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using HastaneProjesi.Models;
 using Microsoft.Identity.Client;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HastaneProjesi.Controllers
 {
+    [Authorize]
     public class ClinicController : Controller
     {
         ClinicRepository clinicRepository = new ClinicRepository();
+        
         public IActionResult Index()
         {
             
