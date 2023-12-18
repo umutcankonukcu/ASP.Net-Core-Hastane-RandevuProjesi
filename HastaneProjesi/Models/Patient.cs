@@ -1,7 +1,10 @@
-﻿namespace HastaneProjesi.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HastaneProjesi.Models
 {
     public class Patient
     {
+        [Key]
         public int PatientID { get; set; }
         public string PatientName { get; set; }
         public int PatientAge { get; set; }

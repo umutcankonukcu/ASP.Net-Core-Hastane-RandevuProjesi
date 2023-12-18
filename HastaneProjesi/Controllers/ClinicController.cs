@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using HastaneProjesi.Models;
 using Microsoft.Identity.Client;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace HastaneProjesi.Controllers
 {
@@ -10,6 +12,7 @@ namespace HastaneProjesi.Controllers
     public class ClinicController : Controller
     {
         ClinicRepository clinicRepository = new ClinicRepository();
+        
         
         public IActionResult Index()
         {
@@ -53,7 +56,7 @@ namespace HastaneProjesi.Controllers
             clinicRepository.ClinicUpdate(x);
             return RedirectToAction("Index");
         }
-
+        
         public IActionResult ClinicDelete(int id)
         {
             var x = clinicRepository.GetClinic(id);

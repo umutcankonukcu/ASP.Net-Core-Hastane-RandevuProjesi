@@ -7,6 +7,7 @@ namespace HastaneProjesi.Models
 {
     public class Clinic
     {
+        [Key]
         public int ClinicID { get; set; }
 
         [Required(ErrorMessage ="Clinic name not empty!!!")]

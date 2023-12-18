@@ -4,6 +4,7 @@ namespace HastaneProjesi.Models
 {
     public class Doctor
     {
+        [Key]
         public int DoctorID { get; set; }
 
         [Required(ErrorMessage ="Doctor name not empty")]

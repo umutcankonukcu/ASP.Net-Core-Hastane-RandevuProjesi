@@ -1,26 +1,41 @@
 
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+//builder.Services.AddMvc();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
     {
-        x.LoginPath = "/Login/Index";
+        x.Cookie.Name = "NetCoreMvc.Auth";
+        x.LoginPath = "/Login/Index/";
+        x.AccessDeniedPath = "/login/Index";
     });
-builder.Services.AddMvc();
-builder.Services.AddMvc(config =>
+
+
+/*builder.Services.AddMvc(config =>
 {
     var policy = new AuthorizationPolicyBuilder()
                   .RequireAuthenticatedUser()
                   .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
 });
+
+builder.Services.AddDistributedMemoryCache();
+*/
 
 
 var app = builder.Build();
@@ -38,8 +53,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization(); 
 app.UseAuthentication();
+ app.UseAuthorization();
+
+
+
 
 
 app.MapControllerRoute(

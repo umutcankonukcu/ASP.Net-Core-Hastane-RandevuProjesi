@@ -1,5 +1,7 @@
 ﻿using HastaneProjesi.Models;
 using HastaneProjesi.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Client;
@@ -7,6 +9,7 @@ using X.PagedList;
 
 namespace HastaneProjesi.Controllers
 {
+    [Authorize]
     public class DoctorController : Controller
     {
         Context c = new Context();
