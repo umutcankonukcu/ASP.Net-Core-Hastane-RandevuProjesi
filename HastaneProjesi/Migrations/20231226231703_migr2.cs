@@ -5,7 +5,7 @@
 namespace HastaneProjesi.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class migr2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +16,8 @@ namespace HastaneProjesi.Migrations
                 {
                     AdminID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    AdminRole = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

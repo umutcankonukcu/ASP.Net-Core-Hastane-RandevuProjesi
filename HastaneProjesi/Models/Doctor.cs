@@ -23,7 +23,7 @@ namespace HastaneProjesi.Models
 
         public virtual Clinic Clinic { get; set; }
 
-        public List<Patient> Patients { get; set; }
+      
 
     }
 }

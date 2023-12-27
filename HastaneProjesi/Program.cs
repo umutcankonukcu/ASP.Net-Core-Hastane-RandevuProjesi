@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using HastaneProjesi.Models;
 
 
 
@@ -14,17 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-
-//builder.Services.AddMvc();
-builder.Services.AddAuthentication(
-    CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
-    {
-        x.Cookie.Name = "NetCoreMvc.Auth";
-        x.LoginPath = "/Login/Index/";
-        x.AccessDeniedPath = "/login/Index";
-    });
-
+builder.Services.AddSession();
 
 /*builder.Services.AddMvc(config =>
 {
@@ -32,10 +23,22 @@ builder.Services.AddAuthentication(
                   .RequireAuthenticatedUser()
                   .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
-});
+}); */
+
+builder.Services.AddMvc();
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+    {
+        x.Cookie.Name = "NetCoreMvc.Auth";
+        x.LoginPath = "/Login/Index/";
+        x.AccessDeniedPath = "/login/Index/";
+    });
+
+
+
 
 builder.Services.AddDistributedMemoryCache();
-*/
+
 
 
 var app = builder.Build();
@@ -48,16 +51,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 
 app.UseAuthentication();
- app.UseAuthorization();
-
-
-
+app.UseAuthorization();
 
 
 app.MapControllerRoute(

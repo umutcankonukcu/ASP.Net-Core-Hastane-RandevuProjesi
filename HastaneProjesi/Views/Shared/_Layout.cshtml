@@ -1,33 +1,177 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿
+@{
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Hospital </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link href="~/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="~/web/css/single.css">
+	<link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="~/web/css/fontawesome-all.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+		  rel="stylesheet">
 </head>
+
 <body>
+	<!--Header-->
+	
+		
+	<header>
+		<div class="top-bar_sub_w3layouts container-fluid">
+			<div class="row">
+				<div class="col-md-4 logo text-left">
+					<a class="navbar-brand" href="~/web/index.html">
+						Hospital
+					</a>
+				</div>
+				<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
+					<span class="mx-lg-4 mx-md-2  mx-1">
+						<h2>Welcome</h2> <h2 style="color:red"><b>@User.Identity.Name</b></h2>
+					</span>
+				</div>
+				<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
+					<span class="mx-lg-4 mx-md-2  mx-1">
+						<a href="~/Login/LogOut">
+							<i class="fas fa-lock"></i> Log Out
+						</a>
+					</span>
+				</div>
+				
+				<div class="col-md-4 log-icons text-right">
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="/Clinic/Index">Clinics</a></li>
-                <li><a href="/Doctor/Index">Doctors</a></li>
-                <li><a href="/Login/Index">Sign In</a></li>
-                <li><a href="/Register/Index">Register</a></li>
-            </ul>
-        </div>
-    </nav>
+					<ul class="social_list1 mt-3">
 
-    <div class="container">
-        @RenderBody()
-    </div>
+						<li>
+							<a href="#" class="facebook1 mx-2">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="twitter2">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="pin">
+								<i class="fab fa-youtube"></i>
+							</a>
+						</li>
+
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="header_top" id="home">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/Clinic/Index">
+								Clinics
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/Doctor/Index">Doctors</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/Patient/Index">Patients</a>
+						</li>
+
+
+						<li class="nav-item">
+							<a class="nav-link" href="~/web/contact.html">Appointment </a>
+						</li>
+
+					</ul>
+
+
+
+
+				</div>
+			</nav>
+
+		</div>
+	</header>
+	<!--//header-->
+	<!--/banner-->
+	</div>
+	</div>
+
+	<!-- //footer -->
+	</div>
+	</footer>
+	<!---->
+	<!-- js -->
+	<script src="~/web/js/jquery-2.2.3.min.js"></script>
+	<!-- //js -->
+	<!--/ start-smoth-scrolling -->
+	<script src="~/web/js/move-top.js"></script>
+	<script src="~/web/js/easing.js"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<!--// end-smoth-scrolling -->
+
+	<script>
+		$(document).ready(function () {
+			/*
+									var defaults = {
+											containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear'
+										};
+									*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+
+	<!-- //Custom-JavaScript-File-Links -->
+	<script src="~/web/js/bootstrap.js"></script>
+
 
 </body>
+
 </html>
+@RenderBody()

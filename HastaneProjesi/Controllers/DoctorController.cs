@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Client;
 using X.PagedList;
 
+
 namespace HastaneProjesi.Controllers
 {
     [Authorize]
     public class DoctorController : Controller
     {
-        Context c = new Context();
-        DoctorRepository doctorRepository = new DoctorRepository();
+		Context c = new Context();
+		DoctorRepository doctorRepository = new DoctorRepository();
         public IActionResult Index(int page = 1)
         {
             

@@ -5,7 +5,7 @@
 namespace HastaneProjesi.Migrations
 {
     /// <inheritdoc />
-    public partial class deneme10 : Migration
+    public partial class initialCreate4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace HastaneProjesi.Controllers
 {
-    
+    [AllowAnonymous]
     public class HomeController : Controller
     {
        public IActionResult Index()

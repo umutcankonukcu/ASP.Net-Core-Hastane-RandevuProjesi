@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneProjesi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231212185209_CreateStatusColumnInClinicsTable")]
-    partial class CreateStatusColumnInClinicsTable
+    [Migration("20231226231053_initialCreate4")]
+    partial class initialCreate4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,23 +90,24 @@ namespace HastaneProjesi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientID"));
 
-                    b.Property<int>("DoctorID")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<int>("PatientAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PatientName")
+                    b.Property<string>("Mail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PatientNumber")
+                    b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("PatientID");
-
-                    b.HasIndex("DoctorID");
 
                     b.ToTable("Patients");
                 });
@@ -122,25 +123,9 @@ namespace HastaneProjesi.Migrations
                     b.Navigation("Clinic");
                 });
 
-            modelBuilder.Entity("HastaneProjesi.Models.Patient", b =>
-                {
-                    b.HasOne("HastaneProjesi.Models.Doctor", "Doctor")
-                        .WithMany("Patients")
-                        .HasForeignKey("DoctorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-                });
-
             modelBuilder.Entity("HastaneProjesi.Models.Clinic", b =>
                 {
                     b.Navigation("Doctors");
-                });
-
-            modelBuilder.Entity("HastaneProjesi.Models.Doctor", b =>
-                {
-                    b.Navigation("Patients");
                 });
 #pragma warning restore 612, 618
         }

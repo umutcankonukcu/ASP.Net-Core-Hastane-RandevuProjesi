@@ -1,38 +1,39 @@
-﻿using HastaneProjesi.Models;
+﻿
+using HastaneProjesi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HastaneProjesi.Repositories
 {
     public class DoctorRepository
     {
-        Context d = new Context();
-        public List<Doctor> DoctorList()
+		Context c = new Context();
+		public List<Doctor> DoctorList()
         {
-            return d.Doctors.ToList();
+            return c.Doctors.ToList();
         }
-        public void  DoctorAdd(Doctor dr)
+        public void DoctorAdd(Doctor dr)
         {
-            d.Doctors.Add(dr);
-            d.SaveChanges();
+            c.Doctors.Add(dr);
+            c.SaveChanges();
         }
         public void DoctorDelete(Doctor dr)
         {
-            d.Doctors.Remove(dr);
-            d.SaveChanges();
+			c.Doctors.Remove(dr);
+			c.SaveChanges();
         }
         public void DoctorUpdate(Doctor dr)
         {
-            d.Doctors.Update(dr);
-            d.SaveChanges();
+			c.Doctors.Update(dr);
+			c.SaveChanges();
         }
         public void GetDoctor(Doctor dr)
         {
-            d.Doctors.Find(dr);
+			c.Doctors.Find(dr);
             
         }
         public List<Doctor> DoctorList(string dr)
         {
-            return d.Doctors.Include(dr).ToList();
+            return c.Doctors.Include(dr).ToList();
         }
 
         

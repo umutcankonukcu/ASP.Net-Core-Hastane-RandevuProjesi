@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneProjesi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231217210710_mig2")]
-    partial class mig2
+    [Migration("20231226231703_migr2")]
+    partial class migr2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,27 @@ namespace HastaneProjesi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("HastaneProjesi.Models.Admin", b =>
+                {
+                    b.Property<int>("AdminID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminID"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdminID");
+
+                    b.ToTable("Admins");
+                });
 
             modelBuilder.Entity("HastaneProjesi.Models.Clinic", b =>
                 {
@@ -82,34 +103,6 @@ namespace HastaneProjesi.Migrations
                     b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("HastaneProjesi.Models.Login", b =>
-                {
-                    b.Property<int>("AdminID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminID"));
-
-                    b.Property<string>("AdminRole")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("AdminID");
-
-                    b.ToTable("Admins");
-                });
-
             modelBuilder.Entity("HastaneProjesi.Models.Patient", b =>
                 {
                     b.Property<int>("PatientID")
@@ -118,23 +111,24 @@ namespace HastaneProjesi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientID"));
 
-                    b.Property<int>("DoctorID")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<int>("PatientAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PatientName")
+                    b.Property<string>("Mail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PatientNumber")
+                    b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("PatientID");
-
-                    b.HasIndex("DoctorID");
 
                     b.ToTable("Patients");
                 });
@@ -150,25 +144,9 @@ namespace HastaneProjesi.Migrations
                     b.Navigation("Clinic");
                 });
 
-            modelBuilder.Entity("HastaneProjesi.Models.Patient", b =>
-                {
-                    b.HasOne("HastaneProjesi.Models.Doctor", "Doctor")
-                        .WithMany("Patients")
-                        .HasForeignKey("DoctorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-                });
-
             modelBuilder.Entity("HastaneProjesi.Models.Clinic", b =>
                 {
                     b.Navigation("Doctors");
-                });
-
-            modelBuilder.Entity("HastaneProjesi.Models.Doctor", b =>
-                {
-                    b.Navigation("Patients");
                 });
 #pragma warning restore 612, 618
         }

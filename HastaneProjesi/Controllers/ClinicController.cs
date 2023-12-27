@@ -5,10 +5,12 @@ using Microsoft.Identity.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 namespace HastaneProjesi.Controllers
 {
-    [Authorize]
+	
+	[Authorize]
     public class ClinicController : Controller
     {
         ClinicRepository clinicRepository = new ClinicRepository();
