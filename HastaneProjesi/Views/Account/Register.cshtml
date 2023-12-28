@@ -1,4 +1,4 @@
-﻿@model RegisterViewModel
+﻿@model Patient
 @{
     ViewData["Title"] = "Register";
     Layout = null;
@@ -49,8 +49,8 @@
 					</span>
 
 					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Enter username">
-						<input class="input100" type="text" asp-for="Username">
-						<span asp-validation-for="Username" class="focus-input100" data-placeholder="Username"></span>
+						<input class="input100" type="text" asp-for="UserName">
+						<span asp-validation-for="UserName" class="focus-input100" data-placeholder="Username"></span>
 						
 					</div>
 					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Enter Mail">
@@ -82,7 +82,7 @@
 								Have an account?
 							</span>
 
-							<a href="Login/Index" class="txt2">
+							<a href="Account/Login" class="txt2">
 								Login
 							</a>
 						</li>

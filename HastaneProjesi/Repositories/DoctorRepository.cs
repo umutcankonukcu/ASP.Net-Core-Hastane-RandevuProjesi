@@ -26,9 +26,9 @@ namespace HastaneProjesi.Repositories
 			c.Doctors.Update(dr);
 			c.SaveChanges();
         }
-        public void GetDoctor(Doctor dr)
+        public Doctor GetDoctor(Doctor dr)
         {
-			c.Doctors.Find(dr);
+			return c.Doctors.Find(dr);
             
         }
         public List<Doctor> DoctorList(string dr)

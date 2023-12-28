@@ -24,6 +24,8 @@ namespace HastaneProjesi.Models
 		[MaxLength(16, ErrorMessage = "Password can be max 16 characters")]
 		public string Password { get; set; }
 
+		[Required]
+		public string Role { get; set; } = "user";
 		// public virtual Login Login { get; set; }
 
 	}

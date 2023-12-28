@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneProjesi.Controllers
 {
-	[Authorize]
+	[Authorize(Roles = "admin")]
 	public class PatientController : Controller
 	{
 			PatientRepository PatientRepository = new PatientRepository();

@@ -11,6 +11,7 @@ namespace HastaneProjesi.Repositories
 		}
 		public void PatientAdd(Patient cl)
 		{
+			
 			c.Patients.Add(cl);
 			c.SaveChanges();
 		}

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using HastaneProjesi.Models;
+using HastaneProjesi.Controllers;
 
 
 
@@ -30,8 +31,10 @@ builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
     {
         x.Cookie.Name = "NetCoreMvc.Auth";
-        x.LoginPath = "/Login/Index/";
-        x.AccessDeniedPath = "/login/Index/";
+        x.ExpireTimeSpan = TimeSpan.FromDays(7);
+        x.LoginPath = "/Account/Login/";
+        x.LogoutPath = "/Account/Logut/";
+        x.AccessDeniedPath = "/Home/AccessDenied/";
     });
 
 

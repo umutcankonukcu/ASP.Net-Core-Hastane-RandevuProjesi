@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 namespace HastaneProjesi.Controllers
 {
 	
-	[Authorize]
+	[Authorize(Roles ="admin")]
     public class ClinicController : Controller
     {
         ClinicRepository clinicRepository = new ClinicRepository();
