@@ -66,10 +66,7 @@ namespace HastaneProjesi.Controllers
 			
 
 			RegisterRepostiory registerRepostiory = new RegisterRepostiory();
-			// if (!ModelState.IsValid)
-			// {
-			//   return View("ClinicAdd");
-			//}
+			
 			registerRepostiory.PatientAdd(p);
 			return RedirectToAction("Login", "Account");
 		}
@@ -79,5 +76,8 @@ namespace HastaneProjesi.Controllers
 			HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 			return RedirectToAction("Index", "Home");
 		}
-	}
+
+
+		
+    }
 }

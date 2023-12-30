@@ -1,0 +1,30 @@
+﻿@model List<HastaneProjesi.Models.Appointment>
+@{
+    ViewData["Title"] = "MyAppointments";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>My Appointments</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>Clinic Name</th>
+        <th>Doctor Name</th>
+        <th>Selected Date</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.AppointmentID</td>
+            <td>@x.UserName</td>
+            <td>@x.ClinicID</td>
+            <td>@x.DoctorID</td>
+            <td>@x.SelectedDate</td>
+            <td><a href="/Appointment/AppointmentDelete/@x.AppointmentID" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+    }
+</table>

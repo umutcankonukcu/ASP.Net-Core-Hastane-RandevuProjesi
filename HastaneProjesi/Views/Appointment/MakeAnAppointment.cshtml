@@ -1,0 +1,80 @@
+﻿@model HastaneProjesi.Models.Appointment
+@{
+    ViewData["Title"] = "MakeAnAppointment";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-9 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">Appointment</h2>
+
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">User Name: </label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="UserName" value="@User.Identity.Name" readonly />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Clinic ID: </label>
+                          
+                  
+                    <div class="col-sm-8">
+                        <select class="dropdown-item-text" asp-for="ClinicID" asp-items="ViewBag.ListClinics" onchange="GetDoctors(this.value)"> </select>
+                        <span asp-validation-for="ClinicID" class="text-danger"></span>
+                    </div>
+                
+            </div>
+            
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Doctor ID: </label>
+                <div class="col-sm-8">
+                    <select class="form-control" name="DoctorID" asp-for="DoctorID" > </select>
+                    <span asp-validation-for="DoctorID" class="text-danger"></span>
+                </div>
+            </div>
+            <script>
+                      function GetDoctors(clinicID) {
+                          var procemessage = "<option value= '0'>wait....</option>";
+                          $("#DoctorID").html(procemessage).show();
+                          var url = '@Url.Action("GetDoctorByClinic","Appointment")';
+                          $.ajax({
+                              url: url,
+                              data: { ClinicID: clinicID },
+                              cache: false,
+                              type: "POST",
+                              success: function (data) {
+                                  var markup = "<option value= '0'>........</option>"
+                                  for (var x = 0; x < data.length; x++) {
+                                      markup += '<option value"' + data[x].value + '">' + data[x].text + '</option>';
+                                  }
+                                  $("#DoctorID").html(markup).show();
+                              },
+                              error: function (response) {
+                                  alert("error:" + response);
+                              }
+                          });
+                      }
+            </script>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Selected Date: </label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="SelectedDate" />
+                    <span asp-validation-for="SelectedDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            
+
+            <div class="row">
+                <div class="offset-sm-4" col-sm-8>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
