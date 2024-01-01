@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HastaneProjesi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HastaneProjesi.Controllers
 {
@@ -48,22 +49,24 @@ namespace HastaneProjesi.Controllers
 			}
 		}
 
-		[HttpDelete("{id}")]
-		public ActionResult Delete(int id)
-		{
-			var y1 = c.Admins.FirstOrDefault(a=>a.AdminID==id);
-			if(y1 is null)
-			{
-				return NotFound();
-			}
-			else
-			{
-				c.Remove(y1);
-				c.SaveChanges();
-				return Ok();
-			}
-		}
-		
-		
-	}
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Admin>> DeleteAdmin(string id)
+        {
+			Context c = new Context();
+            var admin = await c.Admins.FindAsync(id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            
+
+            c.Admins.Remove(admin);
+            await c.SaveChangesAsync();
+
+            return Ok(admin);
+        }
+
+
+    }
 }

@@ -42,36 +42,37 @@
 
 				<form class="login100-form validate-form"  method="post">
 					<span class="login100-form-title p-b-60">
-						Hospital Login Panel
+						@Localizer["Hospital Register Panel"]
+						
 					</span>
 					<span class="login100-form-avatar">
 						<img src="~/Login_v6/images/images.jpeg" alt="AVATAR">
 					</span>
 
-					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Enter username">
+					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate=@Localizer["Enter Username"]>
 						<input class="input100" type="text" asp-for="UserName">
 						<span asp-validation-for="UserName" class="focus-input100" data-placeholder="Username"></span>
 						
 					</div>
-					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Enter Mail">
+					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate=@Localizer["Enter Mail"]>
 						<input class="input100" type="text" asp-for="Mail">
 						<span asp-validation-for="Mail" class="focus-input100" data-placeholder="Mail"></span>
 
 					</div>
-					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Enter Age">
+					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate=@Localizer["Enter Age"]>
 						<input class="input100" type="text" asp-for="Age">
 						<span asp-validation-for="Age" class="focus-input100" data-placeholder="Age"></span>
 
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+					<div class="wrap-input100 validate-input m-b-50" data-validate=@Localizer["Enter password"]>
 						<input class="input100" type="password" asp-for="Password">
 						<span asp-validation-for="Password" class="focus-input100" data-placeholder="Password"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-b-50">
 						<button class="login100-form-btn">
-							Register
+							@Localizer["Register"]
 						</button>
 					</div>
 
@@ -79,12 +80,27 @@
 					<ul>
 						<li>
 							<span class="txt1">
-								Have an account?
+								@Localizer["Have an account?"]
 							</span>
 
 							<a href="Account/Login" class="txt2">
-								Login
+								@Localizer["Login"]
 							</a>
+						</li>
+					</ul>
+					<ul nav navbar-nav float-right>
+						<li class="dropdown dropdown-language nav-item text-right">
+							<a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="flag-icon flag-icon-us"></i>
+								<span class="selected-language">Dil Seç</span>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-flag">
+								<div class="arrow_box">
+
+									<a class="dropdown-item" href="/Account/Register/?culture=en"><i class="flag-icon flag-icon-us"></i>English</a>
+									<a class="dropdown-item" href="/Account/Register/?culture=tr"><i class="flag-icon flag-icon-tr"></i>Turkish</a>
+								</div>
+							</div>
 						</li>
 					</ul>
 				</form>

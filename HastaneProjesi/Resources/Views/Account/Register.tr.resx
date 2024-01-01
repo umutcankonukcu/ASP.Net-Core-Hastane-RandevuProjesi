@@ -117,31 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Admins" xml:space="preserve">
-    <value>Admins</value>
+  <data name="Enter Age" xml:space="preserve">
+    <value>Yaşınızı giriniz</value>
   </data>
-  <data name="All Appointment" xml:space="preserve">
-    <value>AllAppointment</value>
+  <data name="Enter Mail" xml:space="preserve">
+    <value>Mail giriniz</value>
   </data>
-  <data name="Clinics" xml:space="preserve">
-    <value>Clinics</value>
+  <data name="Enter password" xml:space="preserve">
+    <value>Şifre giriniz</value>
   </data>
-  <data name="Doctors" xml:space="preserve">
-    <value>Doctors</value>
+  <data name="Enter Username" xml:space="preserve">
+    <value>Adınızı giriniz</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="Have an account?" xml:space="preserve">
+    <value>Hesabınız var mı?</value>
+  </data>
+  <data name="Hospital Register Panel" xml:space="preserve">
+    <value>Hastane Kayıt Paneli</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="LogOut" xml:space="preserve">
-    <value>Log Out</value>
-  </data>
-  <data name="Patients" xml:space="preserve">
-    <value>Patients</value>
+    <value>Giriş</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Kayıt ol</value>
   </data>
 </root>
