@@ -1,4 +1,5 @@
-﻿@model Admin
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model Admin
 @{
     ViewData["Title"] = "Login";
     Layout = null;
@@ -42,26 +43,26 @@
 
 				<form class="login100-form validate-form"  method="post">
 					<span class="login100-form-title p-b-70">
-						Hospital Login Panel
+						@Localizer["Hospital Login Panel"]
 					</span>
 					<span class="login100-form-avatar">
 						<img src="~/Login_v6/images/images.jpeg" alt="AVATAR">
 					</span>
 
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="@Localizer["Enter User Name"]">
 						<input class="input100" type="text" asp-for="UserName">
 						<span asp-validation-for="UserName" class="focus-input100" data-placeholder="Username"></span>
 						
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+					<div class="wrap-input100 validate-input m-b-50" data-validate="@Localizer["Enter password"]">
 						<input class="input100" type="password" asp-for="Password">
 						<span asp-validation-for="Password" class="focus-input100" data-placeholder="Password"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							@Localizer["Login"]
 						</button>
 					</div>
 
@@ -69,11 +70,11 @@
 					<ul>
 						<li>
 							<span class="txt1">
-								Don’t have an account?
+								@Localizer["Don’t have an account?"]
 							</span>
 
 							<a href="Register/Index" class="txt2">
-								Sign up
+								@Localizer["Sign up"]
 							</a>
 						</li>
 					</ul>

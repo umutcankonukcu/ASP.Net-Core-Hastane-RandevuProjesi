@@ -1,0 +1,18 @@
+﻿@using System.Data
+@model DataTable
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1> Admin List </h1>
+
+<table class="table">
+    @foreach (DataRow row in Model.Rows)
+    {
+        <tr>@row["AdminID"]</tr>
+        <tr>@row["UserName"]</tr>
+        <tr>@row["Password"]</tr>
+        <tr>@row["Role"]</tr>
+    }
+</table>

@@ -67,5 +67,7 @@ namespace HastaneProjesi.Controllers
             return RedirectToAction("Index");
 
         }
+
+        
     }
 }

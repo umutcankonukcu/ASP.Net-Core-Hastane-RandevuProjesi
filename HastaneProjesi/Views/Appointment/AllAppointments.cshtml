@@ -13,9 +13,9 @@
         <th>Clinic Name</th>
         <th>Doctor Name</th>
         <th>Selected Date</th>
-        
+       
     </tr>
-    @foreach (var x in Model.Where(appointment => appointment.UserName == User.Identity.Name))
+    @foreach (var x in Model)
     {
         <tr>
             <td>@x.AppointmentID</td>
@@ -23,7 +23,7 @@
             <td>@x.ClinicID</td>
             <td>@x.DoctorID</td>
             <td>@x.SelectedDate</td>
-            
+           
 
         </tr>
     }

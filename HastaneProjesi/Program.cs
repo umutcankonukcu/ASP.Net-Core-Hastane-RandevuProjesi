@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using HastaneProjesi.Models;
 using HastaneProjesi.Controllers;
+using System.Globalization;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 
 
@@ -16,7 +18,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddSession();
+
+
 
 /*builder.Services.AddMvc(config =>
 {
@@ -26,7 +31,13 @@ builder.Services.AddSession();
     config.Filters.Add(new AuthorizeFilter(policy));
 }); */
 
-builder.Services.AddMvc();
+
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
     {
@@ -45,6 +56,7 @@ builder.Services.AddDistributedMemoryCache();
 
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -65,6 +77,10 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+var suppertedCultures = new[] { "en", "tr" };
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(suppertedCultures[0]).AddSupportedCultures
+    (suppertedCultures).AddSupportedUICultures(suppertedCultures);
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "default",

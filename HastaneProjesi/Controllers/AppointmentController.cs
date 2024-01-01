@@ -21,7 +21,14 @@ namespace HastaneProjesi.Controllers
             return View(appointmentRepository.AppointmentList());
         }
 
-       public IActionResult AppointmentGet(int id)
+        [Authorize(Roles ="admin")]
+        public IActionResult AllAppointments()
+
+        {
+            return View(appointmentRepository.AppointmentList());
+        }
+
+        public IActionResult AppointmentGet(int id)
         {
             var x = appointmentRepository.GetAppointment(id);
             Appointment cln = new Appointment()
@@ -42,16 +49,18 @@ namespace HastaneProjesi.Controllers
             x.DoctorID = p.DoctorID;
             x.SelectedDate = p.SelectedDate;
             appointmentRepository.AppointmentUpdate(x);
-            return RedirectToAction("MyAppointment");
+            return RedirectToAction("Index", "Patient");
         }
 
         public IActionResult AppointmentDelete(int id)
         {
             var x = appointmentRepository.GetAppointment(id);
             appointmentRepository.AppointmentUpdate(x);
-            return RedirectToAction("MyAppointment");
+            return RedirectToAction("Index", "Patient");
 
         }
+
+
 
         [Authorize(Roles = "user,admin")]
         [HttpGet]
@@ -81,7 +90,12 @@ namespace HastaneProjesi.Controllers
             appointmentRepository.AppointmentAdd(p);
             return RedirectToAction("Index", "Home");
         }
-       
-        
+
+        public string GetClinicName(int clinicID)
+        {
+           
+            var clinic = c.Clinics.FirstOrDefault(c => c.ClinicID == clinicID);
+            return clinic != null ? clinic.ClinicName : "N/A";
+        }
     }
 }
